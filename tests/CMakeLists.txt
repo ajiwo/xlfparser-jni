@@ -7,8 +7,9 @@ macro(xlfparser_add_jar arg1)
         INCLUDE_JARS ${xlfparserjni_jar_file}
     )
 endmacro(xlfparser_add_jar)
-
 set(XLF_PATH "${PROJECT_SOURCE_DIR}/${xlfparserjni_test_dir}/file.xml")
+configure_file(${XLF_PATH} "/tmp/file.xml" COPYONLY)
+set(XLF_PATH "/tmp/file.xml")
 
 macro(add_test_jar arg)
     xlfparser_add_jar(${arg}Test)
