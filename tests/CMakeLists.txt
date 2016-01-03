@@ -1,4 +1,5 @@
 set(xlfparserjni_jar_file "${PROJECT_BINARY_DIR}/java/${xlfparserjni_jar_name}.jar")
+set(CMAKE_JAVA_INCLUDE_PATH ${xlfparserjni_jar_file})
 macro(xlfparser_add_jar arg1)
     add_jar(
         ${arg1}
