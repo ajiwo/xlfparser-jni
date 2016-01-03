@@ -9,6 +9,6 @@ script:
   - ctest -V
   - sudo make install
   - cd ../..
-  - rm -rf build && mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=Debug && make VERBOSE=1 && ctest
+  - rm -rf build && mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=Debug && make VERBOSE=1 && ctest -V
   
 

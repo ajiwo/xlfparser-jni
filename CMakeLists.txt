@@ -21,6 +21,7 @@ set(xlfparserjni_src_files
 
 find_package(LibXlfParser REQUIRED)
 if(LIBXLFPARSER_FOUND)
+    set(xlfparserjni_include ${xlfparserjni_include} ${LIBXLFPARSER_INCLUDE_DIRS})
     file(
         STRINGS
         ${LIBXLFPARSER_INCLUDE_DIRS}/xlfparser/xlfparser-config.h
@@ -40,7 +41,7 @@ foreach(xlfparser_config_line ${xlfparser_config_content})
             return()
         endif()
         set(xlfparserjni_libs ${LIBXML2_LIBRARIES})
-        set(xlfparserjni_include ${LIBXML2_INCLUDE_DIR})
+        #set(xlfparserjni_include ${LIBXML2_INCLUDE_DIR})
     endif()
     string(REGEX MATCH "^#define[ ]+XLFPARSER_USE_LIBROXML$" outvar ${xlfparser_config_line})
     if(outvar)
@@ -50,7 +51,7 @@ foreach(xlfparser_config_line ${xlfparser_config_content})
             return()
         endif()
         set(xlfparserjni_libs ${LIBROXML_LIBRARIES})
-        set(xlfparserjni_include ${LIBROXML_INCLUDE_DIRS})
+        #set(xlfparserjni_include ${LIBROXML_INCLUDE_DIRS})
     endif()
 endforeach()
 
@@ -63,7 +64,6 @@ if(NOT JNI_FOUND)
 endif()
 set(xlfparserjni_include ${xlfparserjni_include} ${JAVA_INCLUDE_PATH})
 set(xlfparserjni_include ${xlfparserjni_include} ${JAVA_INCLUDE_PATH2})
-
 
 add_subdirectory("${xlfparserjni_src_dir}")
 add_subdirectory("${xlfparserjni_java_dir}")
