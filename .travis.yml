@@ -8,6 +8,7 @@ script:
   - rm -rf build && mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=Debug && make VERBOSE=1 && ./example/xlfsample ../example/file.xml
   - ctest -V
   - sudo make install
+  - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
   - cd ../..
   - rm -rf build && mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=Debug && make VERBOSE=1 && ctest -V
   
